@@ -1,14 +1,48 @@
 from django.urls import path
 
-from .views import index, ManufacturerListView, CarListView, CarDetailView, DriverListView, DriverDetailView
+from .views import (index,
+                    ManufacturerListView,
+                    CarListView,
+                    CarDetailView,
+                    DriverListView,
+                    DriverDetailView)
+
 
 urlpatterns = [
-    path("", index, name="index"),
-    path("manufacturer/", ManufacturerListView, name="manufacturer-list"),
-    path("cars/", CarListView, name="car-list"),
-    path("cars/pk/", CarDetailView, name="car-detail"),
-    path("drivers/", DriverListView, name="driver-list"),
-    path("drivers/pk/", DriverDetailView, name="driver-detail")
+    path(
+        "",
+        index,
+        name="index"
+    ),
+
+    path(
+        "manufacturer/",
+        ManufacturerListView.as_view(),
+        name="manufacturer-list"
+    ),
+    path(
+        "cars/",
+        CarListView.as_view(),
+        name="car-list"
+    ),
+
+    path(
+        "cars/pk/",
+        CarDetailView.as_view(),
+        name="car-detail"
+    ),
+
+    path(
+        "drivers/",
+        DriverListView.as_view(),
+        name="driver-list"
+    ),
+
+    path(
+        "drivers/pk/",
+        DriverDetailView.as_view(),
+        name="driver-detail"
+    ),
 ]
 
 app_name = "taxi"
